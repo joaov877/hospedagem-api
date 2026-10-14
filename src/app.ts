@@ -1,12 +1,14 @@
 import express from 'express';
 import { pool } from './database/pool';
 import { errorHandler, notFoundHandler } from './middlewares/error-handler';
+import { cors } from './middlewares/cors';
 import { appointmentRoutes } from './routes/appointment.routes';
 import { swaggerRoutes } from './docs/swagger';
 
 export const app = express();
 
 app.disable('x-powered-by');
+app.use(cors);
 app.use(express.json({ limit: '100kb' }));
 
 app.get('/health', async (_req, res) => {
