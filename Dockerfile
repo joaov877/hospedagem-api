@@ -14,4 +14,4 @@ RUN npm ci --omit=dev && npm cache clean --force
 COPY --from=builder --chown=node:node /app/dist ./dist
 USER node
 EXPOSE 3000
-CMD ["node", "dist/index.js"]
+CMD ["node", "dist/server.js"]
